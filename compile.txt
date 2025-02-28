@@ -1,0 +1,22 @@
+# Definir o compilador
+CC=arm-linux-gnueabihf-gcc
+
+# Definir os diretórios de inclusão
+INCLUDES="-Iinclude -Iinclude/application -Iinclude/display -Iinclude/sensors -Iinclude/protocol"
+
+# Compilar cada arquivo separadamente
+$CC -Wall -Wextra -O2 $INCLUDES -c src/main.c -o obj/main.o
+$CC -Wall -Wextra -O2 $INCLUDES -c src/application/motiplant.c -o obj/application/motiplant.o
+$CC -Wall -Wextra -O2 $INCLUDES -c src/display/lcd_1602.c -o obj/display/lcd_1602.o
+$CC -Wall -Wextra -O2 $INCLUDES -c src/sensors/aht20.c -o obj/sensors/aht20.o
+$CC -Wall -Wextra -O2 $INCLUDES -c src/sensors/soil_moisture_ads.c -o obj/sensors/soil_moisture_ads.o
+$CC -Wall -Wextra -O2 $INCLUDES -c src/protocol/mqtt.c -o obj/protocol/mqtt.o
+
+$CC -static -L/usr/arm-linux-gnueabihf/lib \
+    obj/main.o \
+    obj/application/motiplant.o \
+    obj/display/lcd_1602.o \
+    obj/sensors/aht20.o \
+    obj/sensors/soil_moisture_ads.o \
+    obj/protocol/mqtt.o \
+    -o motiplant -lpaho-mqtt3c

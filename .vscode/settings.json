@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "i2c-dev.h": "c",
+        "fcntl.h": "c",
+        "stdio.h": "c",
+        "soil_moisture_ads.h": "c",
+        "aht20.h": "c",
+        "mqtt.h": "c",
+        "motiplant.h": "c",
+        "unistd.h": "c"
+    }
+}
